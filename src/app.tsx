@@ -1,5 +1,6 @@
 import AppBar from '@material-ui/core/AppBar';
 import Backdrop from '@material-ui/core/Backdrop';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -7,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 
 import { makeStyles } from '@material-ui/core/styles';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -61,6 +63,9 @@ const useStyles = makeStyles((theme) => ({
   },
   votesTable: {
     marginTop: theme.spacing(2),
+  },
+  votedIcon: {
+    color: 'green',
   },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
@@ -155,8 +160,12 @@ const PlayerNameCell: React.FC<Player> = ({ name, votedAt }) => {
 
   return (
     <TableCell className={className}>
-      {votedAt ? '✔' : ' '}
-      {name}
+      <Box alignItems="center" display="flex">
+        <SvgIcon className={classes.votedIcon}>
+          {votedAt && <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>}
+        </SvgIcon>
+        {name}
+      </Box>
     </TableCell>
   );
 };
