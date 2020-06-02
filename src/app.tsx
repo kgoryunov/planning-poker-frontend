@@ -181,7 +181,7 @@ export const App: React.FC = () => {
   const classes = useStyles();
   const { connectionStatus, state, socketRef } = useSocket('/', 'spyglass');
 
-  const voteValues = [0.5, 1, 2, 3, 4, 5, 6, 7, 8];
+  const voteValues = [0.5, 1, 1.5, 2, 3, 4, 5, 6, 7, 8];
 
   const someoneVoted = state?.players.some((player) => player.votedAt);
   const showVotesButtonEnabled = someoneVoted && !state?.areVotesVisible;
